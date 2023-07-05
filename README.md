@@ -1,3 +1,8 @@
+# Create GUI 
+
+We create the FormInputExample with following code in `activity_main.xml`
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -112,3 +117,8 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+The final design can be seen as below:
+
+![img.png](img.png)
