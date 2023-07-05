@@ -55,8 +55,6 @@ Then, we will create inner class `DatePickerFragment.java` inside `MainActivity.
 Then, we assign `setOnClickListener` to open the `DatePickerDialog`
 
 ```java
-
-
 public class MainActivity extends AppCompatActivity {
 
     // DatePicker Fragment inside MainActivity
@@ -89,18 +87,18 @@ Then, we can open `DatePickerFragment`
 After that, we need to update the selected date back to the view. First, we have to add function `updateDOB` to `MainActivity.java`
 ```java
 public void updateDOB(LocalDate dob){
-        TextView dobControl = findViewById(R.id.dob_control);
-        dobControl.setText(dob.toString());
+    TextView dobControl = findViewById(R.id.dob_control);
+    dobControl.setText(dob.toString());
 }
 ```
 
 Then, use it in function `onDateSet` of the fragment
 ```java
-        @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day){
-            LocalDate dob = LocalDate.of(year, ++month, day);
-            ((MainActivity)getActivity()).updateDOB(dob);
-        }
+@Override
+public void onDateSet(DatePicker datePicker, int year, int month, int day){
+    LocalDate dob = LocalDate.of(year, ++month, day);
+    ((MainActivity)getActivity()).updateDOB(dob);
+}
 ```
 
 Voila, we can set the selected date back to the view
