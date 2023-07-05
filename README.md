@@ -1,59 +1,8 @@
-# Add Date Picker
+# Create AlertDialog
 
-First, we need to add two TextView controls
-- One to say "Date of Birth"
-- One to show selected data 
+Now, we will add code to create an AlertDialog to display back to the user what they entered.
 
-```xml
-    <TextView
-    android:id="@+id/dob_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="24dp"
-    android:layout_marginTop="16dp"
-    android:text="Date of birth"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <TextView
-    android:id="@+id/dob_control"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="24dp"
-    android:layout_marginTop="16dp"
-    android:text="Click here to select the date of birth"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/dob_text" />
-
-```
-
-The updated design can be seen
-
-![img_2.png](img_2.png)
-
-Then, we will create inner class `DatePickerFragment.java` inside `MainActivity.java`
-
-```java
-    // DatePicker Fragment inside MainActivity
-    public static class DatePickerFragment extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState)
-        {
-            LocalDate d = LocalDate.now();
-            int year = d.getYear();
-            int month = d.getMonthValue();
-            int day = d.getDayOfMonth();
-        return new DatePickerDialog(getActivity(), this, year, --month, day);}
-        @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day){
-        }
-    }
-```
-
-Then, we assign `setOnClickListener` to open the `DatePickerDialog`
-
+In `MainActivity.java`, add the code below:
 ```java
 public class MainActivity extends AppCompatActivity {
 
@@ -63,44 +12,75 @@ public class MainActivity extends AppCompatActivity {
         // ...
     }
 
+
+    public  void updateDOB(LocalDate dob){
+        // ...
+    }
+    // Define variables to reference the layout
+    EditText nameInput;
+    EditText emailInput;
+    EditText phoneInput;
+    Spinner sp;
+    String workStatus;
+    Button submitBtn;
+    
+    // Define function getInputs() to get values from inputs
+    private void getInputs(){
+        nameInput = findViewById(R.id.name_input);
+        emailInput = findViewById(R.id.email_input);
+        phoneInput = findViewById(R.id.phone_input);
+
+        String name = nameInput.getText().toString();
+        String email = emailInput.getText().toString();
+        String phone = phoneInput.getText().toString();
+        workStatus = sp.getSelectedItem().toString();
+
+        // Use function displayNextAlert to display an AlertDialog
+        displayNextAlert(name, phone, email, workStatus);
+    }
+
+    public void displayNextAlert(String name, String phone, String email, String workStatus){
+        new AlertDialog.Builder(this)
+                .setTitle("Details Entered")
+                .setMessage(
+                        "Details: \n" +
+                                name + "\n" +
+                                phone + "\n" +
+                                email + "\n" +
+                                workStatus
+                        )
+                .setNeutralButton("Back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
+    }
     TextView dobControl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dobControl = findViewById(R.id.dob_control);
-
-        dobControl.setOnClickListener(new View.OnClickListener() {
+        // ...
+        
+        // Refer the Spinner from the layout
+        sp = findViewById(R.id.spinner);
+        
+        // Refer the button from the layout
+        submitBtn = findViewById(R.id.submit_btn);
+        
+        // Adding behavior to the button
+        submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getSupportFragmentManager(), "datePicker");
+                getInputs();
             }
         });
     }
 }
 ```
-Then, we can open `DatePickerFragment`
 
-![img_3.png](img_3.png)
+After that, we can display the AlertDialog
 
-After that, we need to update the selected date back to the view. First, we have to add function `updateDOB` to `MainActivity.java`
-```java
-public void updateDOB(LocalDate dob){
-    TextView dobControl = findViewById(R.id.dob_control);
-    dobControl.setText(dob.toString());
-}
-```
-
-Then, use it in function `onDateSet` of the fragment
-```java
-@Override
-public void onDateSet(DatePicker datePicker, int year, int month, int day){
-    LocalDate dob = LocalDate.of(year, ++month, day);
-    ((MainActivity)getActivity()).updateDOB(dob);
-}
-```
-
-Voila, we can set the selected date back to the view
-
-![img_4.png](img_4.png)
+![img_5.png](img_5.png)
