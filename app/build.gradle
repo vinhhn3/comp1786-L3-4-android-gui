@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.comp1786_l3_4_android_gui"
-        minSdk 24
+        minSdk 34
         targetSdk 33
         versionCode 1
         versionName "1.0"
