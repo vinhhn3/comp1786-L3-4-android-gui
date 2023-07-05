@@ -105,4 +105,4 @@ Then, use it in function `onDateSet` of the fragment
 
 Voila, we can set the selected date back to the view
 
-
+![img_4.png](img_4.png)
