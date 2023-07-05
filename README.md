@@ -1,14 +1,37 @@
-package com.example.comp1786_l3_4_android_gui;
+# ListView Example
 
-import android.app.ListActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+Change the generated default Activity to inherit from ListView
 
+```java
+public class MainActivity extends ListActivity {
+```
+
+Right-click on the layout folder and select New -> Layout Resource File
+
+![img_1.png](img_1.png)
+
+![img.png](img.png)
+
+The list_item configuration file defines the view applied to each item in the list
+
+`list_item.xml`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:textSize="16sp"
+    android:textColor="#FF0000"
+    >
+
+</TextView>
+```
+
+Create an array of Strings containing the Days of the Week
+
+```java
 public class MainActivity extends ListActivity {
     private static final String[] WEEKDAYS = new String[]{
             "Monday",
@@ -20,6 +43,11 @@ public class MainActivity extends ListActivity {
             "Sunday"
     };
 
+```
+
+Amend the onCreate() method
+
+```java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,4 +64,15 @@ public class MainActivity extends ListActivity {
             }
         });
     }
-}
+```
+
+Voila,  we can create listView
+
+![img_2.png](img_2.png)
+
+If you just type a letter, the list is automatically filtered
+
+![img_3.png](img_3.png)
+
+
+
