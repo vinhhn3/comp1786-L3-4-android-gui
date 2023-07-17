@@ -1,6 +1,12 @@
 # Populate Spinner through Code
 
-Another way, we can populate data to spinner through code
+Another way, we can populate data to spinner through code with Adapter. 
+
+## Adapter in Android
+
+![img_2.png](img_2.png)
+
+## Code
 
 `MainActivity.java`
 ```java
