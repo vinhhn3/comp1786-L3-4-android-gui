@@ -4,6 +4,8 @@ Change the generated default Activity to inherit from ListView
 
 ```java
 public class MainActivity extends ListActivity {
+    // The rest of the code
+}
 ```
 
 Right-click on the layout folder and select New -> Layout Resource File
@@ -44,8 +46,16 @@ public class MainActivity extends ListActivity {
     };
 
 ```
+## Using an ArrayAdapter with ListView
 
-Amend the onCreate() method
+In Android development, any time we want to show a vertical list of scrollable items we will use a ListView which has data populated using an Adapter. 
+The simplest adapter to use is called an ArrayAdapter because the adapter converts an ArrayList of objects into View items loaded into the ListView container.
+
+![img_4.png](img_4.png)
+
+## Java code
+
+Amend the `onCreate()` method
 
 ```java
     @Override
@@ -66,7 +76,7 @@ Amend the onCreate() method
     }
 ```
 
-Voila,  we can create listView
+Voila, we can create listView
 
 ![img_2.png](img_2.png)
 
