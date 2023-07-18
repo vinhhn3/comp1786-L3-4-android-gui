@@ -113,10 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 CheckBox cb = findViewById(R.id.checkBox);
 
                 if (!cb.isChecked()){
-                    Toast.makeText(
-                            MainActivity.this,
-                            "You must check the box",
-                            Toast.LENGTH_SHORT)
+                    Toast
+                            .makeText(
+                                    MainActivity.this,
+                                    "You must check the box",
+                                    Toast.LENGTH_LONG
+                            )
                             .show();
                     return;
                 }
