@@ -33,12 +33,18 @@ The updated design can be seen
 
 ## Fragment in Android
 
-`Fragment` class in Android is used to build dynamic User Interfaces. Fragment should be used within the Activity. 
-A greatest advantage of fragments is that it simplifies the task of creating UI for multiple screen sizes. 
-A activity can contain any number of fragments. An Android fragment is not by itself a subclass of View which most other UI components are. 
-Instead, a fragment has a view inside it. It is this view which is eventually displayed inside the activity in which the fragment lives. 
-Because an Android fragment is not a view, adding it to an activity looks somewhat different than adding a view (e.g. TextView). 
-A fragment is added to a ViewGroup inside the activity. The fragment’s view is displayed inside this ViewGroup. 
+`Fragment` class in Android is used to build dynamic User Interfaces. Fragment should be used within the Activity.
+
+A greatest advantage of fragments is that it simplifies the task of creating UI for multiple screen sizes.
+
+A activity can contain any number of fragments. An Android fragment is not by itself a subclass of View which most other UI components are.
+
+Instead, a fragment has a view inside it. It is this view which is eventually displayed inside the activity in which the fragment lives.
+
+Because an Android fragment is not a view, adding it to an activity looks somewhat different than adding a view (e.g. TextView).
+
+A fragment is added to a ViewGroup inside the activity. The fragment’s view is displayed inside this ViewGroup.
+
 The following diagram shows depicts what happens when a fragment is added to an activity:
 
 ![img_6.png](img_6.png)
