@@ -1,23 +1,21 @@
 package com.example.comp1786_l3_4_android_gui;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.loader.content.Loader;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import java.time.LocalDate;
 
@@ -28,25 +26,27 @@ public class MainActivity extends AppCompatActivity {
             DatePickerDialog.OnDateSetListener {
         @NonNull
         @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState)
-        {
+        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
             LocalDate d = LocalDate.now();
             int year = d.getYear();
             int month = d.getMonthValue();
             int day = d.getDayOfMonth();
-        return new DatePickerDialog(getActivity(), this, year, --month, day);}
+            return new DatePickerDialog(getActivity(), this, year, --month, day);
+        }
+
         @Override
-        public void onDateSet(DatePicker datePicker, int year, int month, int day){
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             LocalDate dob = LocalDate.of(year, ++month, day);
-            ((MainActivity)getActivity()).updateDOB(dob);
+            ((MainActivity) getActivity()).updateDOB(dob);
         }
     }
 
 
-    public  void updateDOB(LocalDate dob){
+    public void updateDOB(LocalDate dob) {
         TextView dobControl = findViewById(R.id.dob_control);
         dobControl.setText(dob.toString());
     }
+
     // Define variables to reference the layout
     EditText nameInput;
     EditText emailInput;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     Button submitBtn;
 
     // Define function getInputs() to get values from inputs
-    private void getInputs(){
+    private void getInputs() {
         nameInput = findViewById(R.id.name_input);
         emailInput = findViewById(R.id.email_input);
         phoneInput = findViewById(R.id.phone_input);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         displayNextAlert(name, phone, email, workStatus);
     }
 
-    public void displayNextAlert(String name, String phone, String email, String workStatus){
+    public void displayNextAlert(String name, String phone, String email, String workStatus) {
         new AlertDialog.Builder(this)
                 .setTitle("Details Entered")
                 .setMessage(
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                                 phone + "\n" +
                                 email + "\n" +
                                 workStatus
-                        )
+                )
                 .setNeutralButton("Back", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -88,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
     TextView dobControl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
